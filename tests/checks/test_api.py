@@ -8,10 +8,6 @@ pytestmark = pytest.mark.public_api_test
 def test_api() -> None:
     """Test that the public API hasn't changed."""
     from gh_issue_validator.checks import (  # noqa: F401, PLC0415
-        CheckDisorderedHeadings,
-        CheckMissingHeadings,
-        CheckUnexpectedHeadings,
-        CheckWordCount,
         ValidationCheck,
         Validator,
     )
