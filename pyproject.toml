@@ -56,8 +56,9 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
-  "D101",    # Require docstring for class
-  "FBT001",  # Forbid boolean positional arguments
-  "S101",    # Forbid assertion statements
-  "SLF001",  # Forbid private member access
+  "D101",     # Require docstring for class
+  "FBT001",   # Forbid boolean positional arguments
+  "PLR2004",  # Forbid magic values
+  "S101",     # Forbid assertion statements
+  "SLF001",   # Forbid private member access
 ]
