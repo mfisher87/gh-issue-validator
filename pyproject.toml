@@ -41,6 +41,7 @@ module = [
 ]
 ignore_missing_imports = true
 
+
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
@@ -61,4 +62,11 @@ ignore = [
   "PLR2004",  # Forbid magic values
   "S101",     # Forbid assertion statements
   "SLF001",   # Forbid private member access
+]
+
+
+[tool.pytest]
+strict_markers = true
+markers = [
+  "public_api_test: validate that the public API hasn't changed unintentionally",
 ]
