@@ -8,14 +8,19 @@ from gh_issue_validator.report import ValidationIssue, ValidationReport
 @pytest.mark.parametrize(
     ("issues", "expected_is_failure"),
     [
-        ([], False),
-        ([ValidationIssue(code="test", message="something broke")], True),
-        (
+        pytest.param([], False, id="empty report is not a failure"),
+        pytest.param(
+            [ValidationIssue(code="test", message="something broke")],
+            True,
+            id="one issue is a failure",
+        ),
+        pytest.param(
             [
                 ValidationIssue(code="a", message="msg a"),
                 ValidationIssue(code="b", message="msg b", heading="Some heading"),
             ],
             True,
+            id="multiple issues is a failure",
         ),
     ],
 )
