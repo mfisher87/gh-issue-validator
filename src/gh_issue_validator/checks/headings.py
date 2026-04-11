@@ -27,7 +27,7 @@ class CheckMissingHeadings(ValidationCheck):
         self._requirements = requirements
 
     @typing.override
-    def check(self, segments: SegmentsMap, report: ValidationReport) -> None:
+    def check(self, *, segments: SegmentsMap, report: ValidationReport) -> None:
         for req in self._requirements:
             if req["heading"] in segments:
                 continue
@@ -112,7 +112,7 @@ class CheckWordCount(ValidationCheck):
         self._requirements = requirements
 
     @typing.override
-    def check(self, segments: SegmentsMap, report: ValidationReport) -> None:
+    def check(self, *, segments: SegmentsMap, report: ValidationReport) -> None:
         for req in self._requirements:
             heading = req["heading"]
             if heading not in segments:
