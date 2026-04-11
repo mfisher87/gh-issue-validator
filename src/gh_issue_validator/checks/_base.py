@@ -8,14 +8,17 @@ from gh_issue_validator.types import SegmentsMap
 class ValidationCheck(ABC):
     @abstractmethod
     def check(self, *, segments: SegmentsMap, report: ValidationReport) -> None:
-        pass
+        """Apply the check to the document and report issues."""
 
 
 class Validator:
+    """Entrypoint for registering and executing checks on a Markdown document."""
+
     def __init__(self, *, checks: list[ValidationCheck]) -> None:
         self.checks = checks
 
     def validate(self, *, markdown: str) -> ValidationReport:
+        """Run all validation checks on `markdown`."""
         report = ValidationReport()
         segments = _parse_segments(markdown)
 

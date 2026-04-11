@@ -48,6 +48,7 @@ ignore = [
   "COM812",  # Require trailing commas (formatter handles it)
   "D104",    # Require docstring in public package
   "D105",    # Require docstring in magic method
+  "D107",    # Require docstring in __init__
   "D203",    # Require blank line before class docstring
   "D213",    # Require multi-line docstrings to start on the line after opening triple-quotes
   "FIX002",  # Forbid TODOs
@@ -58,6 +59,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
   "D101",     # Require docstring for class
+  "E501",     # Require line length <=88 chars
   "FBT001",   # Forbid boolean positional arguments
   "PLR2004",  # Forbid magic values
   "S101",     # Forbid assertion statements
