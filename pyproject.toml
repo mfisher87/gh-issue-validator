@@ -49,10 +49,14 @@ ignore = [
   "D105",    # Require docstring in magic method
   "D203",    # Require blank line before class docstring
   "D213",    # Require multi-line docstrings to start on the line after opening triple-quotes
+  "FIX002",  # Forbid TODOs
+  "TD002",   # Require author in TODOs
+  "TD003",   # Require issue link in TODOs
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
+  "D101",    # Require docstring for class
   "FBT001",  # Forbid boolean positional arguments
   "S101",    # Forbid assertion statements
   "SLF001",  # Forbid private member access
