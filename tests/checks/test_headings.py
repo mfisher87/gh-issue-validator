@@ -51,7 +51,11 @@ class TestCheckMissingHeadings:
         report = ValidationReport()
         check.check(segments=segments, report=report)
 
-        missing = [i.heading for i in report.issues if i.code == "missing-heading"]
+        missing = [
+            i.heading
+            for i in report.issues
+            if i.code == "missing-heading" and i.heading is not None
+        ]
         assert sorted(missing) == sorted(expected_missing)
 
 
@@ -92,7 +96,9 @@ class TestCheckUnexpectedHeadings:
         check.check(segments=segments, report=report)
 
         unexpected = [
-            i.heading for i in report.issues if i.code == "unexpected-heading"
+            i.heading
+            for i in report.issues
+            if i.code == "unexpected-heading" and i.heading is not None
         ]
         assert sorted(unexpected) == sorted(expected_unexpected)
 
