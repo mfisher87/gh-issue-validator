@@ -1,6 +1,7 @@
 """Checks related to expectations about headings and content within them."""
 
 import typing
+from itertools import pairwise
 from typing import NotRequired, TypedDict
 
 import nltk
@@ -88,7 +89,7 @@ class CheckDisorderedHeadings(ValidationCheck):
             heading for heading in segments if heading in self._expected_order
         ]
 
-        for current_heading, next_heading in zip(actual_headings, actual_headings[1:]):
+        for current_heading, next_heading in pairwise(actual_headings):
             if expected_index[current_heading] <= expected_index[next_heading]:
                 continue
 
