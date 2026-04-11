@@ -1,4 +1,4 @@
-"""Tests for the reports.py module."""
+"""Tests for the report.py module."""
 
 import pytest
 
