@@ -44,7 +44,6 @@ def _parse_segments(markdown: str) -> SegmentsMap:
     # Add the last segment
     # TODO: Confusing! Adding content after the end of the loop...
     if current_segment_header is not None:
-        # TODO: Can we refactor to remove this typeguard
         document_segments[current_segment_header] = current_segment_content
 
     return document_segments
