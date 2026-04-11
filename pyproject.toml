@@ -44,8 +44,11 @@ ignore_missing_imports = true
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-  "D104",  # Require docstring in public package
-  "D105",  # Require docstring in magic method
+  "COM812",  # Require trailing commas (formatter handles it)
+  "D104",    # Require docstring in public package
+  "D105",    # Require docstring in magic method
+  "D203",    # Require blank line before class docstring
+  "D213",    # Require multi-line docstrings to start on the line after opening triple-quotes
 ]
 
 [tool.ruff.lint.per-file-ignores]
