@@ -1,0 +1,48 @@
+[project]
+name = "gh-issue-validator"
+version = "0.1.0"
+description = "Validate (lint) GitHub issues."
+readme = "README.md"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+  "mistletoe",
+  "nltk",
+  "pydantic-settings",
+  "pygithub",
+]
+
+[project.scripts]
+gh-issue-validator = "gh_issue_validator.cli:cli"
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "mypy>=1.19.1",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gh_issue_validator"]
+
+
+[tool.mypy]
+packages = ["gh_issue_validator"]
+python_version = "3.12"
+strict = true
+
+[[tool.mypy.overrides]]
+module = [
+  "nltk",
+]
+ignore_missing_imports = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "D104",
+]
