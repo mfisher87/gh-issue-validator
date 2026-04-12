@@ -66,6 +66,9 @@ ignore = [
   "S101",     # Forbid assertion statements
   "SLF001",   # Forbid private member access
 ]
+".github/issue_validator.py" = [
+  "INP001",  # Require __init__.py
+]
 
 
 [tool.pytest]

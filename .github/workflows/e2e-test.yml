@@ -1,0 +1,63 @@
+name: "End-to-end validation test"
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: "ubuntu-latest"
+    permissions:
+      issues: "write"
+    env:
+      GH_REPO: "${{ github.repository }}"
+      GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    steps:
+      - uses: "actions/checkout@v4"
+
+      - name: "Create test issue"
+        id: "create-issue"
+        run: |
+          issue_url=$(gh issue create \
+            --title "E2E: gh-issue-validator test issue" \
+            --body-file .github/e2e-issue-body.md \
+            --label test)
+          echo "number=${issue_url##*/}" >> "$GITHUB_OUTPUT"
+
+      - uses: "astral-sh/setup-uv@v5"
+
+      - name: "Run validator"
+        env:
+          GITHUB_REPOSITORY: "${{ github.repository }}"
+          ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
+        run: "uv run .github/e2e_validate_issue.py"
+
+      - name: "Assert validation comment was posted"
+        env:
+          ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
+        run: |
+          body=$(gh api "repos/$GH_REPO/issues/$ISSUE_NUMBER/comments" \
+            --jq '[.[].body | select(contains("<!-- gh-issue-validator -->"))] | length')
+          if [[ "$body" -lt 1 ]]; then
+            echo "Error: no validation comment found on issue #$ISSUE_NUMBER" >&2
+            exit 1
+          fi
+
+      - name: "Assert comment reports validation success"
+        env:
+          ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
+        run: |
+          body=$(gh api "repos/$GH_REPO/issues/$ISSUE_NUMBER/comments" \
+            --jq '[.[].body | select(contains("Validation successful"))] | length')
+          if [[ "$body" -lt 1 ]]; then
+            echo "Error: validation comment does not report success" >&2
+            exit 1
+          fi
+
+      - name: "Close test issue"
+        if: "always()"
+        env:
+          ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
+        run: "gh issue close '$ISSUE_NUMBER' --reason 'not planned'"
