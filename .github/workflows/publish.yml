@@ -31,11 +31,11 @@ jobs:
     permissions:
       id-token: "write"
     steps:
-    - name: "Get dist artifact"
-      uses: "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131"  # v7
-      with:
-        name: "dist"
-        path: "dist/"
+      - name: "Get dist artifact"
+        uses: "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131"  # v7
+        with:
+          name: "dist"
+          path: "dist/"
 
-    - name: "Upload dist to PyPI"
-      uses: "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"  # release/v1
+      - name: "Upload dist to PyPI"
+        uses: "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"  # release/v1
