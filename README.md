@@ -96,6 +96,28 @@ jobs:
 ```
 
 
+## Development
+
+Tools: [uv](https://github.com/astral-sh/uv), [prek](https://prek.j178.dev/)
+
+
+### Get started
+
+```bash
+uv sync
+prek install
+```
+
+
+### Run tests
+
+```bash
+prek run -a
+uv run mypy
+uv run pytest
+```
+
+
 ## Acknowledgement
 
 This validator is inspired by the <https://github.com/2i2c-org/initiatives> project.
