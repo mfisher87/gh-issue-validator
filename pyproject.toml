@@ -17,8 +17,9 @@ gh-issue-validator = "gh_issue_validator.cli:cli"
 
 [dependency-groups]
 dev = [
-  "pytest",
   "mypy>=1.19.1",
+  "pytest",
+  "pytest-cov",
 ]
 
 
