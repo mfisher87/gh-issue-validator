@@ -33,7 +33,7 @@ def validate(
 
     issue_number = os.environ.get("GITHUB_ISSUE_NUMBER")
     if not issue_number:
-        print("Error: ISSUE_NUMBER is not set.", file=sys.stderr)
+        print("Error: GITHUB_ISSUE_NUMBER is not set.", file=sys.stderr)
         early_fail = True
 
     if early_fail:
