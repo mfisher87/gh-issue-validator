@@ -22,7 +22,7 @@ jobs:
         run: |
           issue_url=$(gh issue create \
             --title "E2E: gh-issue-validator test issue" \
-            --body-file .github/e2e-issue-body.md \
+            --body-file .github/e2e-test-issue.md \
             --label test)
           echo "number=${issue_url##*/}" >> "$GITHUB_OUTPUT"
 
