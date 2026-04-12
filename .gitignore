@@ -1,4 +1,5 @@
 __pycache__
 .coverage
+.venv
 
 src/gh_issue_validator/_version.py
