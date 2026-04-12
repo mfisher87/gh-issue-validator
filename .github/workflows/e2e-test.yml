@@ -60,4 +60,4 @@ jobs:
         if: "always()"
         env:
           GITHUB_ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
-        run: "gh issue close '$GITHUB_ISSUE_NUMBER' --reason 'not planned'"
+        run: 'gh issue close "$GITHUB_ISSUE_NUMBER" --reason "not planned"'
