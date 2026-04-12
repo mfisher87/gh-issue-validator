@@ -1,2 +1,4 @@
 __pycache__
 .coverage
+
+src/gh_issue_validator/_version.py
