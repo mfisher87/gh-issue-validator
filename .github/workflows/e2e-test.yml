@@ -32,7 +32,7 @@ jobs:
         env:
           GITHUB_REPOSITORY: "${{ github.repository }}"
           ISSUE_NUMBER: "${{ steps.create-issue.outputs.number }}"
-        run: "uv run .github/e2e_validate_issue.py"
+        run: "uv run .github/issue_validator.py"
 
       - name: "Assert validation comment was posted"
         env:
