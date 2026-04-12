@@ -52,6 +52,7 @@ ignore = [
   "D203",    # Require blank line before class docstring
   "D213",    # Require multi-line docstrings to start on the line after opening triple-quotes
   "FIX002",  # Forbid TODOs
+  "T201",    # Forbid print
   "TD002",   # Require author in TODOs
   "TD003",   # Require issue link in TODOs
 ]
