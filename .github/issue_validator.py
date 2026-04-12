@@ -1,7 +1,7 @@
 """For end-to-end testing of this package."""
 
+from gh_issue_validator import validate
 from gh_issue_validator.checks.headings import CheckMissingHeadings
-from gh_issue_validator.validate import validate
 
 validate(
     checks=[
