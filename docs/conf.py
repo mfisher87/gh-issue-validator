@@ -43,6 +43,7 @@ exclude_patterns = [
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
+    "mistletoe": ("https://mistletoe-ebp.readthedocs.io/en/latest/", None),
 }
 
 # Support Google style docstrings, no mixing
