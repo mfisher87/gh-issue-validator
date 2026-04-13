@@ -19,6 +19,9 @@ project = "gh-issue-valiator"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 nitpicky = True
+nitpick_ignore = [
+    ("py:class", "mistletoe.token.Token"),
+]
 
 extensions = [
     "sphinx.ext.autodoc",  # Generate docs from docstrings
@@ -43,7 +46,6 @@ exclude_patterns = [
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
-    "mistletoe": ("https://mistletoe-ebp.readthedocs.io/en/latest/", None),
 }
 
 # Support Google style docstrings, no mixing
