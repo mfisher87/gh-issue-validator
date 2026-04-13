@@ -21,6 +21,12 @@ dev = [
   "pytest",
   "pytest-cov",
 ]
+docs = [
+  "myst-parser>=5.0.0",
+  "pydata-sphinx-theme==0.16.0",  # See: https://github.com/pydata/pydata-sphinx-theme/issues/2090
+  "sphinx>=9.1.0",
+  "sphinx-autodoc-typehints",
+]
 
 
 [build-system]
