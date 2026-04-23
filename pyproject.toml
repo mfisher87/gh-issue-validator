@@ -8,7 +8,6 @@ dynamic = ["version"]
 dependencies = [
   "mistletoe",
   "nltk",
-  "pydantic-settings",
   "pygithub",
 ]
 
