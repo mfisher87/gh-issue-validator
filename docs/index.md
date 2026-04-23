@@ -35,7 +35,7 @@ This library will help you perform this validation.
 
 ## Getting started
 
-TODO
+Please see our [quickstart guide](/user-guide/quickstart.md)!
 
 
 ## 🚀 Powered by...
