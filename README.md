@@ -3,6 +3,9 @@
 `gh-issue-validator` is a customizable "linter" for issues in a GitHub repository.
 It ensures issues conform to a specified format.
 
+When an issue doesn't conform to the desired format, a bot will post a comment including
+all errors found.
+
 
 ## Installation
 
@@ -12,48 +15,13 @@ It expects to be used in GitHub Actions.
 
 ## Usage
 
-### Write your validation script
+`gh-issue-validator` allows you to use first-party checks or custom checks.
+The following example uses some of the included first-party checks:
 
-To get started, you'll need to write a validation script.
-We suggest creating it at `.github/issue_validator.py`.
-
-At the top of the script, include PEP723 metadata to enable automated installation of
-dependencies.
-At minimum, we'll need to add this project, `gh-issue-validator`, as a dependency.
 
 ```python
-# /// script
-# requires-python = ">=3.12"
-# dependencies = [
-#   "gh-issue-validator",
-# ]
-# ///
-import typing
-
-from gh_issue_validator import ValidationCheck, ValidationIssue, ValidationReport, validate
+from gh_issue_validator import validate
 from gh_issue_validator.checks.headings import CheckMissingHeadings, HeadingRequirement
-from gh_issue_validator.types import SegmentsMap
-
-
-# Optional: Create your own validator based on the ValidationCheck ABC.
-class ProblemStatementQualityCheck(ValidationCheck):
-    """Reject problem statements that are just a URL."""
-
-    @typing.override
-    def check(self, *, segments: SegmentsMap, report: ValidationReport) -> None:
-        heading_to_check = "Problem statement"
-        content = segments.get(heading_to_check, [])
-        if not content:
-            return  # Empty content is handled by first-party CheckWordCount check.
-
-        text = str(content).strip()
-        if text.startswith("http") and " " not in text:
-            # Our custom "issue" to report:
-            report.add_issue(ValidationIssue(
-                code="problem-statement-is-url",
-                message="Problem statement should be a description, not just a URL.",
-                heading=heading_to_check,
-            ))
 
 HEADING_REQUIREMENTS =[
     {"heading": "Problem statement", "min_words": 10},
@@ -63,12 +31,11 @@ HEADING_REQUIREMENTS =[
 validate(checks=[
     CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
     CheckWordCount(requirements=HEADING_REQUIREMENTS),
-    ProblemStatementQualityCheck(),
 ])
 ```
 
-
-### Call it from GitHub Actions
+If the file above lives at `.github/issue_validator.py`, you can write a GitHub Actions
+workflow like so to run it:
 
 ```yaml
 on:
@@ -94,6 +61,13 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GITHUB_ISSUE_NUMBER: "${{ github.event.issue.number }}"
 ```
+
+Check out our
+[quickstart documentation](https://gh-issue-validator.readthedocs.io/en/latest/user-guide/quickstart/)
+for full usage instructions, including defining custom checks!
+
+See the [API documentation](https://gh-issue-validator.readthedocs.io/en/latest/api/)
+for full descriptions of the toolkit.
 
 
 ## Development
