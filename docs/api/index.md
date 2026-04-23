@@ -3,5 +3,6 @@
 ```{toctree}
 :glob:
 
+top-level.py
 *
 ```
