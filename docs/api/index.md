@@ -4,5 +4,6 @@
 :glob:
 
 top-level.py
+*/index
 *
 ```
