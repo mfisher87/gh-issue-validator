@@ -1,6 +1,6 @@
 # Quickstart
 
-### Write your validation script
+## Write your validation script
 
 To get started, you'll need to write a validation script.
 We suggest creating it at `.github/issue_validator.py`.
@@ -56,7 +56,7 @@ validate(checks=[
 ```
 
 
-### Call it from GitHub Actions
+## Call it from GitHub Actions
 
 ```yaml
 on:

@@ -3,7 +3,7 @@
 Tools: [uv](https://github.com/astral-sh/uv), [prek](https://prek.j178.dev/)
 
 
-### Get started
+## Get started
 
 ```bash
 uv sync
@@ -11,7 +11,7 @@ prek install
 ```
 
 
-### Run tests
+## Run tests
 
 ```bash
 prek run -a
