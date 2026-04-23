@@ -1,4 +1,4 @@
-# `checks` module
+# Checks
 
 ```{toctree}
 :hidden:
