@@ -17,7 +17,8 @@ def validate(
 ) -> None:
     """Validate a GitHub issue and apply labels/comments.
 
-    Reads GITHUB_TOKEN, GITHUB_REPOSITORY, and GITHUB_ISSUE_NUMBER from the environment.
+    Reads `GITHUB_TOKEN`, `GITHUB_REPOSITORY`, and `GITHUB_ISSUE_NUMBER` from the
+    environment.
     Exits with return code 1 if validation fails.
     """
     early_fail: bool = False
