@@ -62,7 +62,7 @@ HEADING_REQUIREMENTS =[
 
 validate(checks=[
     CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
-    CheckWordCount(requirements=HEADING_REQUIREMENTS)
+    CheckWordCount(requirements=HEADING_REQUIREMENTS),
     ProblemStatementQualityCheck(),
 ])
 ```
