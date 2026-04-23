@@ -3,7 +3,7 @@
 ```{toctree}
 :glob:
 
-top-level.py
+top-level
 */index
 *
 ```
