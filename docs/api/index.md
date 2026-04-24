@@ -3,5 +3,7 @@
 ```{toctree}
 :glob:
 
+top-level
+*/index
 *
 ```

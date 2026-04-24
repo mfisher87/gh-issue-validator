@@ -21,6 +21,8 @@ project = "gh-issue-valiator"
 nitpicky = True
 nitpick_ignore = [
     ("py:class", "mistletoe.token.Token"),
+    # This seems to be a bug in sphinx-autodoc-typehints?
+    ("py:class", "gh_issue_validator.types.TypeAliasType"),
 ]
 
 extensions = [
@@ -58,6 +60,10 @@ typehints_use_rtype = False
 
 # Display the parameter's default value alongside the parameter's type
 typehints_defaults = "comma"
+
+# Always show parameter type in func/method signatures, even when there are no arg
+# definitions in the docstring
+always_document_param_types = True
 
 
 # -- Options for HTML output -------------------------------------------------
