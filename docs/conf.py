@@ -21,6 +21,8 @@ project = "gh-issue-valiator"
 nitpicky = True
 nitpick_ignore = [
     ("py:class", "mistletoe.token.Token"),
+    # This seems to be a bug in sphinx-autodoc-typehints?
+    ("py:class", "gh_issue_validator.types.TypeAliasType"),
 ]
 
 extensions = [
