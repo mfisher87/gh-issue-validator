@@ -71,6 +71,14 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
+".github/issue_validator.py" = [
+  "INP001",  # Require __init__.py
+]
+"docs/conf.py" = [
+  "INP001",  # Require __init__.py
+  "D100",    # Require docstring for module
+  "ERA001",  # Forbid commented code
+]
 "tests/**/*.py" = [
   "D101",     # Require docstring for class
   "E501",     # Require line length <=88 chars
@@ -78,9 +86,6 @@ ignore = [
   "PLR2004",  # Forbid magic values
   "S101",     # Forbid assertion statements
   "SLF001",   # Forbid private member access
-]
-".github/issue_validator.py" = [
-  "INP001",  # Require __init__.py
 ]
 
 
