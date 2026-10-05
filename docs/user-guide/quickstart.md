@@ -18,7 +18,12 @@ At minimum, we'll need to add this project, `gh-issue-validator`, as a dependenc
 # ///
 import typing
 
-from gh_issue_validator import ValidationCheck, ValidationIssue, ValidationReport, validate
+from gh_issue_validator import (
+    ValidationCheck,
+    ValidationIssue,
+    ValidationReport,
+    validate,
+)
 from gh_issue_validator.checks.headings import CheckMissingHeadings, HeadingRequirement
 from gh_issue_validator.types import SegmentsMap
 
@@ -37,22 +42,27 @@ class ProblemStatementQualityCheck(ValidationCheck):
         text = str(content).strip()
         if text.startswith("http") and " " not in text:
             # Our custom "issue" to report:
-            report.add_issue(ValidationIssue(
-                code="problem-statement-is-url",
-                message="Problem statement should be a description, not just a URL.",
-                heading=heading_to_check,
-            ))
+            report.add_issue(
+                ValidationIssue(
+                    code="problem-statement-is-url",
+                    message="Problem statement should be a description, not just a URL.",
+                    heading=heading_to_check,
+                )
+            )
 
-HEADING_REQUIREMENTS =[
+
+HEADING_REQUIREMENTS = [
     {"heading": "Problem statement", "min_words": 10},
     {"heading": "Proposed solution", "min_words": 5, "max_words": 100},
 ]
 
-validate(checks=[
-    CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
-    CheckWordCount(requirements=HEADING_REQUIREMENTS),
-    ProblemStatementQualityCheck(),
-])
+validate(
+    checks=[
+        CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
+        CheckWordCount(requirements=HEADING_REQUIREMENTS),
+        ProblemStatementQualityCheck(),
+    ]
+)
 ```
 
 

@@ -23,15 +23,17 @@ The following example uses some of the included first-party checks:
 from gh_issue_validator import validate
 from gh_issue_validator.checks.headings import CheckMissingHeadings, HeadingRequirement
 
-HEADING_REQUIREMENTS =[
+HEADING_REQUIREMENTS = [
     {"heading": "Problem statement", "min_words": 10},
     {"heading": "Proposed solution", "min_words": 5, "max_words": 100},
 ]
 
-validate(checks=[
-    CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
-    CheckWordCount(requirements=HEADING_REQUIREMENTS),
-])
+validate(
+    checks=[
+        CheckMissingHeadings(requirements=HEADING_REQUIREMENTS),
+        CheckWordCount(requirements=HEADING_REQUIREMENTS),
+    ]
+)
 ```
 
 If the file above lives at `.github/issue_validator.py`, you can write a GitHub Actions
